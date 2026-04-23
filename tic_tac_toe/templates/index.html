@@ -3,8 +3,19 @@
 <head>
     <title>Tic Tac Toe AI</title>
     <style>
-        body { text-align: center; font-family: Arial; }
-        .board { display: grid; grid-template-columns: repeat(3, 100px); gap: 5px; justify-content: center; }
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         button {
             width: 100px;
             height: 100px;
@@ -31,17 +42,23 @@ function play(i){
     board[i] = "X";
 
     fetch("/move", {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({board:board})
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({board: board})
     })
-    .then(res=>res.json())
-    .then(data=>{
+    .then(res => res.json())
+    .then(data => {
         if(data.move !== -1){
             board[data.move] = "O";
         }
-        alert("Minimax Time: "+data.minimax_time.toFixed(5) +
-              "\nAlphaBeta Time: "+data.alphabeta_time.toFixed(5));
+
+        alert(
+            "Minimax Time: " + data.minimax_time.toFixed(5) +
+            "\nAlphaBeta Time: " + data.alphabeta_time.toFixed(5) +
+            "\nMinimax Nodes: " + data.nodes_minimax +
+            "\nAlphaBeta Nodes: " + data.nodes_ab
+        );
+
         render();
     });
 
@@ -49,8 +66,8 @@ function play(i){
 }
 
 function render(){
-    let html="";
-    for(let i=0;i<9;i++){
+    let html = "";
+    for(let i = 0; i < 9; i++){
         html += `<button onclick="play(${i})">${board[i]}</button>`;
     }
     document.getElementById("board").innerHTML = html;
