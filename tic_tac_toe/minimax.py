@@ -2,6 +2,10 @@ from utils import check_winner, is_draw, get_moves
 
 nodes_minimax = 0
 
+def reset_minimax():
+    global nodes_minimax
+    nodes_minimax = 0
+
 def minimax(board, is_max):
     global nodes_minimax
     nodes_minimax += 1
