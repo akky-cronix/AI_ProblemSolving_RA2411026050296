@@ -2,6 +2,10 @@ from utils import check_winner, is_draw, get_moves
 
 nodes_ab = 0
 
+def reset_ab():
+    global nodes_ab
+    nodes_ab = 0
+
 def alphabeta(board, alpha, beta, is_max):
     global nodes_ab
     nodes_ab += 1
