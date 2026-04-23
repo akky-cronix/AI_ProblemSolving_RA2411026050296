@@ -1,1 +1,2 @@
-
+Minimax: Higher time, more nodes
+Alpha-Beta: Faster, fewer nodes
