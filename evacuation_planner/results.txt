@@ -1,1 +1,9 @@
+Disaster Evacuation Planner Results:
 
+- Problem modeled using state space representation
+- Constraints ensure safety of civilians
+- BFS guarantees optimal path to solution
+- System suggests next best move on invalid input
+
+Conclusion:
+The system successfully ensures safe evacuation using AI search techniques.
